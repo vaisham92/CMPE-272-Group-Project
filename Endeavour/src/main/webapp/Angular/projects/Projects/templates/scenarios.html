@@ -1,0 +1,92 @@
+<div class="row ng-scope">
+	<div class="col-lg-12">
+		<div class="page-header">
+			<h2 class="text-primary">
+				Scenarios <small><a type="button"
+					class="btn btn-outline btn-primary btn-sm" data-toggle="modal"
+					data-target="#myModal"> Create New Scenario </a></small>
+			</h2>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-hidden="true">
+								<i class="fa fa-times"></i>
+							</button>
+							<h4 class="modal-title" id="myModalLabel">New Scenario</h4>
+						</div>
+						<div class="modal-body">
+							<form role="form" class="ng-pristine ng-valid">
+								<div class="form-group">
+									<label>Scenario Name: </label> <input class="form-control"
+										placeholder="eg: AuthService Perf BVT"  ng-model="formData.name" required>
+									<div class="form-group">
+										<label>Scenario Description: </label>
+										<textarea class="form-control"
+											placeholder="eg: Perf Scenario on Auth Service aiming at checking api such as /login, /claims, /metadata etc. run concurrently"
+											rows="3"  ng-model="formData.description" required></textarea>
+									</div>
+									<div class="form-group">
+										<label>Default build info: </label>
+										<textarea class="form-control"
+											placeholder="eg: Running performance at 2400 RPM on Single Server"
+											rows="3"  ng-model="formData.defaultBuildInfo" required></textarea>
+									</div>
+									<div class="form-group">
+										<label>Comments: </label>
+										<textarea class="form-control" rows="3"  ng-model="formData.comments"></textarea>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary" ng-click="createNewScenario()">Create</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row ng-scope">
+	<div ng-repeat="scenario in Scenarios">
+		<div class="col-lg-3 col-md-6 ng-isolate-scope" number="1"
+			comments="New comments!" colour="primary" type="comments">
+			<div class="panel panel-green">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<i class="fa fa-support fa-5x"></i>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="ng-binding">
+								{{scenario.name}} <a type="button" class="btn btn-social btn-xs"
+									style="color: white"><i class="fa fa-edit"></i> </a>
+							</div>
+						</div>
+						<div class="col-xs-12 text-right">
+							<span class="pull-right"> <!-- btn btn-block btn-social btn-github-->
+								<a type="button" class="btn btn-social btn-xs"
+								style="color: white" ng-click="deleteScenario(scenario.id)"><i class="fa fa-trash-o"></i> </a>
+							</span>
+						</div>
+					</div>
+				</div>
+				<a
+					href="#/projects/{{scenario.projectId}}/scenarios/{{scenario.id}}/builds">
+					<div class="panel-footer">
+						<span class="pull-left">View Details</span> <span
+							class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+						<div class="clearfix"></div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

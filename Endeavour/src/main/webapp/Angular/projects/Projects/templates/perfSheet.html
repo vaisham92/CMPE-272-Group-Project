@@ -1,0 +1,53 @@
+<div class="row ng-scope">
+	<div class="col-lg-15">
+		<div class="page-header">
+			<h2 class="text-primary">Consolidated Performance Report
+				[{{monthAndYear}}]</h2>
+		</div>
+	</div>
+	<div class="col-lg-15">
+		<div class="col-lg-2">
+			<p>
+				<b>&nbsp&nbsp&nbsp Month-wise</b>
+			</p>
+			<ul class="nav nav-second-level collapse in" aria-expanded="true">
+				<li><a ng-click="getReportForCurrentYear()">Current</a></li>
+				<li
+					ng-repeat="consolidatedMeta in ConsolidatedReportsMeta | orderBy:'$index':true"">
+					<a
+					ng-click="getReportFor(consolidatedMeta.year, consolidatedMeta.month)">{{consolidatedMeta.month}}-{{consolidatedMeta.year}}</a>
+				</li>
+			</ul>
+		</div>
+		<div class="col-lg-10">
+			<div class="table-responsive">
+				<table
+					class="table table-striped table-bordered table-hover dataTable no-footer">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Project Name</th>
+							<th>Scenario Name</th>
+							<th>Average Response Time (ms)</th>
+							<th>Maximum Throughput (RPM)</th>
+							<th>Transaction Count</th>
+							<th>CPU Utilization (%)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr
+							ng-repeat="consolidateReport in ConsolidatedReports track by $index">
+							<td>{{$index+1}}</td>
+							<td>{{consolidateReport.projectName}}</td>
+							<td>{{consolidateReport.scenarioName}}</td>
+							<td>{{consolidateReport.averageResponseTime}}</td>
+							<td>{{consolidateReport.maximumThroughput}}</td>
+							<td>{{consolidateReport.transactionCount}}</td>
+							<td>{{consolidateReport.cpuUtilization}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
