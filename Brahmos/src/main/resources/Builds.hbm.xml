@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2016 12:46:25 AM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="org.vaisham.perf.autogen.Builds" table="builds">
+        <composite-id name="id" class="org.vaisham.perf.autogen.BuildsId">
+            <key-property name="id" type="int">
+                <column name="id" />
+            </key-property>
+            <key-property name="projectId" type="int">
+                <column name="project_id" />
+            </key-property>
+        </composite-id>
+        <property name="description" type="string">
+            <column name="description" length="50" not-null="true" />
+        </property>
+        <property name="buildInfo" type="binary">
+            <column name="buildInfo" />
+        </property>
+        <property name="lastModifiedDate" type="timestamp">
+            <column name="lastModifiedDate" length="19"/>
+        </property>
+        <property name="createdDate" type="timestamp">
+            <column name="createdDate" length="19"/>
+        </property>
+        <property name="isDeleted" type="boolean">
+            <column name="isDeleted" not-null="true" />
+        </property>
+        <property name="comments" type="string">
+            <column name="comments" length="4000" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
